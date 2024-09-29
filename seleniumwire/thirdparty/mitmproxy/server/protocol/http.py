@@ -549,8 +549,10 @@ class HttpLayer(base.Layer):
 
         for addr in self.config.options.no_proxy:
             host, *port = addr.split(':')
-
-            if request.host.endswith(host):
+            print(host)
+            print(request.url)
+            print(host in request.url)
+            if request.host.endswith(host) or host in request.url:
                 no_proxy = True
 
                 if port:
